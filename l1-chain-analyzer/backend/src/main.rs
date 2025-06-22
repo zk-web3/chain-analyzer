@@ -136,10 +136,8 @@ async fn main() {
     let app = Router::new()
         .route("/api/chains", get(get_chains_data))
         .route("/api/eth/l2", get(get_eth_l2_data))
-        .fallback_service(ServeDir::new("dist"))
         .with_state(shared_state)
-        .layer(cors)
-        .layer(TraceLayer::new_for_http());
+        .layer(cors);
 
     let addr = SocketAddr::from(([0, 0, 0, 0], 8080));
     println!("->> LISTENING on http://{addr}\n");
