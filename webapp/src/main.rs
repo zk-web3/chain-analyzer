@@ -42,13 +42,8 @@ enum Theme {
 // endregion: --- Data Structs
 
 // region: --- API Fetching
-fn get_api_base_url() -> &'static str {
-    option_env!("API_BASE_URL").unwrap_or("http://127.0.0.1:8080")
-}
-
 async fn fetch_chains() -> Result<Vec<ChainData>, gloo_net::Error> {
-    let url = format!("{}/api/chains", get_api_base_url());
-    Request::get(&url)
+    Request::get("/api/chains")
         .send()
         .await?
         .json()
@@ -56,8 +51,7 @@ async fn fetch_chains() -> Result<Vec<ChainData>, gloo_net::Error> {
 }
 
 async fn fetch_l2s() -> Result<Vec<L2Data>, gloo_net::Error> {
-    let url = format!("{}/api/eth/l2", get_api_base_url());
-    Request::get(&url)
+    Request::get("/api/eth/l2")
         .send()
         .await?
         .json()

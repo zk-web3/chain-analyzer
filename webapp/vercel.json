@@ -1,4 +1,7 @@
 {
+    "installCommand": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y; . $HOME/.cargo/env; rustup target add wasm32-unknown-unknown; curl --proto '=https' --tlsv1.2 -sSf https://get.trunk.io | bash",
+    "buildCommand": "trunk build --release",
+    "outputDirectory": "dist",
     "rewrites": [
       {
         "source": "/api/(.*)",
