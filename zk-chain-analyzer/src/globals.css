@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-950 text-gray-100 antialiased;
+}
+
+.animated-gradient-bg {
+  background: linear-gradient(120deg, #3b82f6, #a21caf, #f472b6, #3b82f6);
+  background-size: 200% 200%;
+  animation: gradientMove 8s ease-in-out infinite;
+}
+@keyframes gradientMove {
+  0%,100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.glass-card {
+  background: rgba(24, 24, 32, 0.7);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255,255,255,0.18);
+  transition: box-shadow 0.3s, border 0.3s;
+}
+.glass-card:hover {
+  box-shadow: 0 0 32px 8px #3b82f6cc, 0 0 0 0 #a21caf00;
+  border: 1.5px solid #3b82f6;
+}
+
+.neon-text {
+  color: #fff;
+  text-shadow: 0 0 8px #a21caf, 0 0 16px #3b82f6;
+}
+
+.glow-border {
+  border: 2px solid #3b82f6;
+  box-shadow: 0 0 16px 2px #3b82f6, 0 0 32px 8px #a21caf44;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+.glow-border-active {
+  border: 2.5px solid #f472b6;
+  box-shadow: 0 0 32px 8px #f472b6cc, 0 0 64px 16px #a21caf88;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #181820;
+}
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 8px;
+}
+
+.futuristic-gradient {
+  background: linear-gradient(90deg, #3b82f6 0%, #a21caf 50%, #f472b6 100%);
+  filter: blur(0.5px);
+}
+
+.futuristic-glow {
+  text-shadow: 0 0 8px #a21caf, 0 0 16px #3b82f6;
+}
+
+.glassmorphism-card {
+  background: rgba(24, 24, 32, 0.7);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2rem;
+}
+
+@keyframes bg-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-bg-move {
+  animation: bg-move 16s ease-in-out infinite;
+}
+
+@keyframes glow-sidebar {
+  0%, 100% { box-shadow: 0 0 32px 8px #3b82f6cc, 0 0 0 0 #a21caf00; }
+  50% { box-shadow: 0 0 48px 16px #a21cafcc, 0 0 0 0 #3b82f600; }
+}
+.animate-glow-sidebar {
+  animation: glow-sidebar 4s ease-in-out infinite;
+} 
