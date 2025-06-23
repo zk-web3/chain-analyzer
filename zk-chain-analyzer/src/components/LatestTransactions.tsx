@@ -54,6 +54,21 @@ const CHAIN_COLUMNS: Record<string, { key: string; label: string }[]> = {
   ],
 };
 
+type Transaction = {
+  hash?: string;
+  from?: string;
+  to?: string;
+  value?: string | number;
+  timeStamp?: string;
+  version?: string;
+  sender?: string;
+  gas_used?: string | number;
+  timestamp?: string;
+  digest?: string;
+  height?: string | number;
+  [key: string]: string | number | undefined;
+};
+
 export default function LatestTransactions({ chainKey }: { chainKey: string }) {
   const { txs, loading } = useChainData(chainKey);
   const safeTxs = Array.isArray(txs) ? txs : [];
@@ -74,7 +89,7 @@ export default function LatestTransactions({ chainKey }: { chainKey: string }) {
             <tr><td colSpan={columns.length} className="text-center py-4 animate-pulse">Loading...</td></tr>
           ) : safeTxs.length === 0 ? (
             <tr><td colSpan={columns.length} className="text-center py-4">No data</td></tr>
-          ) : safeTxs.map((tx: any, idx: number) => (
+          ) : safeTxs.map((tx: Transaction, idx: number) => (
             <tr key={tx.hash || tx.version || tx.digest || idx} className="hover:bg-gray-900/60 transition-all">
               {columns.map(col => (
                 <td key={col.key} className="truncate max-w-[120px]">

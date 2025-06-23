@@ -16,8 +16,13 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, ChartJST
 
 export type ChartData = { time: string; value: number };
 
-function isChartData(obj: any): obj is { labels: any[]; values: any[] } {
-  return obj && Array.isArray(obj.labels) && Array.isArray(obj.values);
+function isChartData(obj: unknown): obj is { labels: string[]; values: number[] } {
+  return (
+    typeof obj === 'object' &&
+    obj !== null &&
+    Array.isArray((obj as { labels?: unknown[] }).labels) &&
+    Array.isArray((obj as { values?: unknown[] }).values)
+  );
 }
 
 export default function ChainChart({ chainKey }: { chainKey: string }) {

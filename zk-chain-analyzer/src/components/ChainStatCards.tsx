@@ -39,7 +39,7 @@ const CHAIN_FIELDS: Record<string, { key: string; label: string; tooltip: string
   ],
 };
 
-type Stats = { [key: string]: any };
+type Stats = { [key: string]: string | number | undefined };
 
 export default function ChainStatCards({ chainKey }: { chainKey: string }) {
   const { stats, loading } = useChainData(chainKey);

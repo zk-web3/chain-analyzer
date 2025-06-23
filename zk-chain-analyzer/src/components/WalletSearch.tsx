@@ -3,6 +3,20 @@
 import React, { useState } from 'react';
 import useWalletData from '../utils/useWalletData';
 
+type Transaction = {
+  hash?: string;
+  from?: string;
+  to?: string;
+  value?: string | number;
+  timeStamp?: string;
+  version?: string;
+  sender?: string;
+  gas_used?: string | number;
+  timestamp?: string;
+  digest?: string;
+  height?: string | number;
+};
+
 export default function WalletSearch({ chainKey }: { chainKey: string }) {
   const [address, setAddress] = useState('');
   const [query, setQuery] = useState('');
@@ -34,7 +48,7 @@ export default function WalletSearch({ chainKey }: { chainKey: string }) {
           <div className="mb-2">Tx Count: <span className="font-mono">{data.txCount ?? 'N/A'}</span></div>
           <div className="font-bold mt-4 mb-1">Recent Transactions</div>
           <ul className="text-xs">
-            {(data.txs || []).length === 0 ? <li>No transactions</li> : data.txs.map((tx: any) => (
+            {(data.txs || []).length === 0 ? <li>No transactions</li> : data.txs.map((tx: Transaction) => (
               <li key={tx.hash} className="truncate">{tx.hash?.slice(0, 10)}...{tx.hash?.slice(-6)}</li>
             ))}
           </ul>

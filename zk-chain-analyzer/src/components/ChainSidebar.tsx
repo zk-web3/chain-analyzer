@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 const CHAINS = [
   { key: 'eth', name: 'Ethereum', logo: '/globe.svg', l2s: [
@@ -24,7 +25,7 @@ export default function ChainSidebar({ selected, onSelect }: { selected: string,
             className={`w-full flex items-center gap-3 px-4 py-2 rounded-lg glass-card transition-all ${selected === chain.key ? 'neon-text glow-border border-2 border-cyan-400' : 'hover:bg-gray-900/60'}`}
             onClick={() => onSelect(chain.key)}
           >
-            <img src={chain.logo} alt={chain.name} className="w-6 h-6" />
+            <Image src={chain.logo} alt={chain.name} width={24} height={24} className="w-6 h-6" />
             <span className="flex-1 text-left">{chain.name}</span>
             {chain.l2s && (
               <span
@@ -43,7 +44,7 @@ export default function ChainSidebar({ selected, onSelect }: { selected: string,
                   className={`flex items-center gap-2 px-3 py-1 rounded-md glass-card text-sm ${selected === l2.key ? 'neon-text glow-border border border-cyan-400' : 'hover:bg-gray-900/60'}`}
                   onClick={() => onSelect(l2.key)}
                 >
-                  <img src={l2.logo} alt={l2.name} className="w-5 h-5" />
+                  <Image src={l2.logo} alt={l2.name} width={20} height={20} className="w-5 h-5" />
                   {l2.name}
                 </button>
               ))}
